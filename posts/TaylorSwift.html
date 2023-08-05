@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <hr>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Taylor Swift has long been known for her catchy choruses, motivational lyrics, and upbeat music. Her fans can often feel quite deep emotional connections to the lyrics of her songs as she easily creates relatable themes of basic rom-com plot, demonstrates the feeling of being “different”, or even create a sense of “slay” energy. As such, while it is commonly known by Swifties that the lyrics of songs are powerful in emotion and meaning, it begs questions if the track order of her albums also convey a story-like narrative. Previous investigation of Taylor Swift’s work have clearly seen shifting narrative formula as <em>Reputation</em> identifies as more hip hop while <em>folkmore</em> leans more on the country music elements yet studies within these albums have not been examined in depth (Fogarty and Arnold 2021). With this interest in mind, I hope to explore the question of whether Taylor Swift crafts some semblence of an overarching narrative with her tracks in the <em>Reputation</em> album.</p>
+<p>Taylor Swift has long been known for her catchy choruses, motivational lyrics, and upbeat music. Her fans can often feel quite deep emotional connections to the lyrics of her songs as she easily creates relatable themes of basic rom-com plot, demonstrates the feeling of being “different”, or even create a sense of “slay” energy. As such, while it is commonly known by Swifties that the lyrics of songs are powerful in emotion and meaning, it begs questions if the track order of her albums also convey a story-like narrative. Previous investigation of Taylor Swift’s work has clearly seen shifting narrative formula as <em>Reputation</em> identifies as hip hop while <em>folkmore</em> leans more on the country music elements yet studies within these albums have not been examined in depth (Fogarty and Arnold 2021). With this interest in mind, I hope to explore the question of whether Taylor Swift crafts some semblance of an overarching narrative with her tracks in the <em>Reputation</em> album.</p>
 <section id="questions" class="level3">
 <h3 class="anchored" data-anchor-id="questions">Questions</h3>
 <section id="album-story" class="level5">
@@ -188,13 +188,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="natural-language-processing-nlp" class="level5">
 <h5 class="anchored" data-anchor-id="natural-language-processing-nlp">Natural Language Processing (NLP)</h5>
 <ol start="2" type="1">
-<li>Which words are most frequently used by Taylor Swift in each of her <em>Reputation</em> tracks? What are their significance in the story told by Taylor Swift?</li>
+<li>Which words are most frequently used by Taylor Swift in each of her <em>Reputation</em> tracks? What is their significance in the story told by Taylor Swift?</li>
 </ol>
 </section>
 <section id="sentiment-analysis" class="level5">
 <h5 class="anchored" data-anchor-id="sentiment-analysis">Sentiment Analysis</h5>
 <ol start="3" type="1">
-<li>What is the overall sentiment of each song in Taylor Swift’s <em>Reputation</em> album, and what is its relationship to the narratve of the album iteself?</li>
+<li>What is the overall sentiment of each song in Taylor Swift’s <em>Reputation</em> album, and what is its relationship to the narrative of the album itself?</li>
 </ol>
 </section>
 </section>
@@ -203,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Data &amp; Analytical Process</h1>
 <section id="description-of-data" class="level3">
 <h3 class="anchored" data-anchor-id="description-of-data">Description of Data</h3>
-<p>To explore the lyrics of each song in the <em>Reputation</em> album, I used the Taylor Swift Song Lyrics dataset containing all the lyrics of her albumns on <a href="https://www.kaggle.com/datasets/thespacefreak/taylor-swift-song-lyrics-all-albums">Kaggle</a>. Particularly, I used the “06-reputation.csv” file to access the lyrics of each line in each song in the album. The dataset itself has five columns of data which are defined by the main contributor of the dataset.</p>
+<p>To explore the lyrics of each song in the <em>Reputation</em> album, I used the Taylor Swift Song Lyrics dataset containing all the lyrics of her albums on <a href="https://www.kaggle.com/datasets/thespacefreak/taylor-swift-song-lyrics-all-albums">Kaggle</a>. Particularly, I used the “06-reputation.csv” file to access the lyrics of each line in each song in the album. The dataset itself has five columns of data which are defined by the main contributor of the dataset.</p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -238,17 +238,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data-cleaning" class="level3">
 <h3 class="anchored" data-anchor-id="data-cleaning">Data Cleaning</h3>
-<p>To better conduct analyses of lyrics of each track, we will need to group the lyrics of each line into a single string. While doing this, we must also ensure the original order of the track in the album is kept. We will manually do this by using the reindex operation and double checking the entire data frame. The data in the lyrics column contains various non-ASCII characters, punctuation marks, and lines of words that are not actually included in the lyrics of the song. We will need to remove all these unncessary elements to ensure that we only analyze the words of each song.</p>
-<div class="cell" data-execution_count="10">
+<p>To better conduct analyses of lyrics of each track, we will need to group the lyrics of each line into a single string. While doing this, we must also ensure the original order of the track in the album is kept. We will manually do this by using the reindex operation and double checking the entire data frame. The data in the lyrics column contains various non-ASCII characters, punctuation marks, and lines of words that are not actually included in the lyrics of the song. We will need to remove all these unnecessary elements to ensure that we only analyze the words of each song.</p>
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>rep <span class="op">=</span> pd.read_csv(<span class="st">'https://github.com/rcy-liu/DH140_FinalProject/raw/main/06-reputation.csv'</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>grp_rep <span class="op">=</span> rep.groupby(<span class="st">'track_title'</span>)[<span class="st">'lyric'</span>].<span class="bu">apply</span>(<span class="st">' '</span>.join).reset_index()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>grp_rep <span class="op">=</span> grp_rep.reindex([<span class="dv">0</span>,<span class="dv">6</span>,<span class="dv">9</span>,<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">14</span>,<span class="dv">1</span>,<span class="dv">12</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(grp_rep[<span class="st">'lyric'</span>])):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    copy <span class="op">=</span> grp_rep[<span class="st">'lyric'</span>][i]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    lyrics <span class="op">=</span> copy                                    <span class="co"># makes a copy to ensure safe editting</span></span>
@@ -266,9 +266,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    grp_rep[<span class="st">'lyric'</span>][i] <span class="op">=</span> lyrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>grp_rep</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="27">
+<div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 
 
@@ -278,7 +278,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">track_title</th>
 <th data-quarto-table-cell-role="th">lyric</th>
-<th data-quarto-table-cell-role="th">word_count</th>
 </tr>
 </thead>
 <tbody>
@@ -286,91 +285,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">0</td>
 <td>...Ready for It?</td>
 <td>Knew he was a killer first time that I saw him...</td>
-<td>459</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">6</td>
 <td>End Game</td>
 <td>I wanna be your end game I wanna be your first...</td>
-<td>719</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">9</td>
 <td>I Did Something Bad</td>
 <td>I never trust a narcissist but they love me So...</td>
-<td>565</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">4</td>
 <td>Don’t Blame Me</td>
 <td>Don't blame me love made me crazy If it doesn'...</td>
-<td>479</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">3</td>
 <td>Delicate</td>
 <td>This ain't for the best My reputation's never ...</td>
-<td>512</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">11</td>
 <td>Look What You Made Me Do</td>
 <td>I don't like your little games Don't like your...</td>
-<td>557</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">13</td>
 <td>So It Goes...</td>
 <td>See you in the dark All eyes on you my magicia...</td>
-<td>390</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">8</td>
 <td>Gorgeous</td>
 <td>Gorgeous You should take it as a compliment Th...</td>
-<td>438</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">7</td>
 <td>Getaway Car</td>
 <td>No nothing good starts in a getaway car It was...</td>
-<td>567</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">10</td>
 <td>King of My Heart</td>
 <td>I'm perfectly fine I live on my own I made up ...</td>
-<td>481</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>Dancing with Our Hands Tied</td>
 <td>I I loved you in secret First sight yeah we lo...</td>
-<td>437</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>Dress</td>
 <td>Our secret moments in a crowded room They got ...</td>
-<td>524</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">14</td>
 <td>This Is Why We Can’t Have Nice Things</td>
 <td>It was so nice throwing big parties Jump into ...</td>
-<td>406</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>Call It What You Want</td>
 <td>My castle crumbled overnight I brought a knife...</td>
-<td>521</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">12</td>
 <td>New Year’s Day</td>
 <td>There's glitter on the floor after the party G...</td>
-<td>375</td>
 </tr>
 </tbody>
 </table>
@@ -384,17 +368,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Results</h1>
 <section id="word-counts-per-track" class="level3">
 <h3 class="anchored" data-anchor-id="word-counts-per-track">Word Counts Per Track</h3>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> counter(s):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> <span class="bu">len</span>(s.split())</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> words</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>grp_rep[<span class="st">'word_count'</span>] <span class="op">=</span> grp_rep[<span class="st">'lyric'</span>].<span class="bu">apply</span>(counter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">5</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.barh(grp_rep[<span class="st">'track_title'</span>], grp_rep[<span class="st">'word_count'</span>], color <span class="op">=</span> <span class="st">'skyblue'</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()          <span class="co"># more intuitive display of track names</span></span>
@@ -402,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Number of Words Per Song"</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Words"</span>)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Song Name"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="15">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>Text(0, 0.5, 'Song Name')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -417,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="natural-language-processing-nlp-1" class="level3">
 <h3 class="anchored" data-anchor-id="natural-language-processing-nlp-1">Natural Language Processing (NLP)</h3>
 <p>To conduct our word frequency analysis, we will first tokenize each of the track’s lyrics and remove stopwords/filler words/punctuations. Given that Taylor Swift often uses various contractions and apostrophes in her lyrics, the typical word_tokenize import had issues correctly tokenizing the words, so the WhitespaceTokenizer import was used instead. Additionally, the contractions import was also used to expand out any commonly used contractions. Once the lyrics were tokenized with stopwords/punctuation/filler words removed, the FreqDist import was used to determine the frequncy of words in all the tracks. The max or the most frequent word was found for each track and then added to a column of a newly created data frame.</p>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
@@ -433,11 +417,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [nltk_data] Downloading package stopwords to /home/jovyan/nltk_data...
 [nltk_data]   Package stopwords is already up-to-date!</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="16">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install contractions</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> contractions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -448,7 +432,7 @@ Requirement already satisfied: anyascii in /opt/conda/lib/python3.10/site-packag
 Requirement already satisfied: pyahocorasick in /opt/conda/lib/python3.10/site-packages (from textsearch&gt;=0.0.21-&gt;contractions) (2.0.0)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>fillers <span class="op">=</span> [<span class="st">'ta'</span>, <span class="st">'ooh'</span>, <span class="st">'ah'</span>, <span class="st">'ra'</span>, <span class="st">'di'</span>, <span class="st">'da'</span>, <span class="st">'oh'</span>, <span class="st">'ha'</span>] </span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># words that don't provide meaning, but instead provide sounds</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -465,10 +449,10 @@ Requirement already satisfied: pyahocorasick in /opt/conda/lib/python3.10/site-p
 <span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    tok_lyrics.append(token)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.probability <span class="im">import</span> FreqDist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>freq_dict <span class="op">=</span> {}</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(tok_lyrics)):</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    freq_dict[i] <span class="op">=</span> FreqDist(tok_lyrics[i])   <span class="co"># finds the frequeny distribution</span></span>
@@ -485,7 +469,7 @@ Requirement already satisfied: pyahocorasick in /opt/conda/lib/python3.10/site-p
 <span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>most_freq <span class="op">=</span> pd.DataFrame({<span class="st">'track'</span>: grp_rep[<span class="st">'track_title'</span>],</span>
 <span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'most_freq_word'</span>: most_used_df[<span class="st">'most_freq_word'</span>]})</span>
 <span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>most_freq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
@@ -581,13 +565,13 @@ Requirement already satisfied: pyahocorasick in /opt/conda/lib/python3.10/site-p
 </div>
 <section id="finding-analysis" class="level4">
 <h4 class="anchored" data-anchor-id="finding-analysis">Finding &amp; Analysis</h4>
-<p>Unsurprisingly, many of the most frequently used words are the part of the songs themselves. However, this result does provide a lot of information into the potential narrative being told by the ordering of the tracks as with the track titles themselves. It seems as though there is some semblence of a trend as songs between “…Ready for It?” to “So It Goes…”, which is reasonable as the first track begins with an ellipsis and the seventh song ends with an ellipsis. The intentional connection drawn between these two songs are quite noticable in the title itself, and it is further confirmed through the most frequeny used words. There seems to be a shift from innocence to seriousness as the words “want”, “good”, “baby”, and “delicate” all connect through a sense of innocent, or even naivety, and then ends with “made” and “goes”, which are more forceful words. This transition of words in this specific section of the album can be connected to Taylor Swift’s life herself as she began her music career in country and being known as the “girl-next-door” (Fogarty and Arnold 2021). Oftentimes, the term is used to signify a person who is percieved as familiar and approachable, which can be seemingly related to the innocence and softness led by the start of the track. However, in 2016, everything changes once Taylor Swift was found in numerous of controversies, such as the tension between Kayne West and Taylor Swift from an awards ceremony, the public breakup with Calvin Harris and the puzzling feud with Katy Perry (Lerner-Gill 2022). The seemingly innocent girl from the past was no more, and we are left with a broken Taylor Swift who needed to build herself from within. After months of silence, she released the music video “Look What You Made Me Do” from the album, which shows her in striking makeup and bold outfits—all while screaming throughout and destroying things around her (Swift 2017).</p>
-<p>After the eventful sent of tracks, we are brought to the next few tracks that represent more “girlboss” energy where Taylor Swift is most known to “getaway” admist all the scrutiny she receives from the public. As through her music video “Look What You Made Me Do”, she continues to describe her need to tell her inner self that she is “gorgeous” by “dancing” and “waiting” for herself to grow past all the snake emojis she was spammed with online (Lerner-Gill 2022). We are then left with the last four songs, which describe Taylor Swift’s reflecting thoughts on her scars. At the time of the album release, the public has done much damage to “take” “things” away from her and put her “call” for help on “hold”.</p>
+<p>Unsurprisingly, many of the most frequently used words are the part of the songs themselves. However, this result does provide a lot of information into the potential narrative being told by the ordering of the tracks as with the track titles themselves. It seems as though there is some semblance of a trend as songs between “…Ready for It?” to “So It Goes…”, which is reasonable as the first track begins with an ellipsis and the seventh song ends with an ellipsis. The intentional connection drawn between these two songs are quite noticeable in the title itself, and it is further confirmed through the most frequency used words. There seems to be a shift from innocence to seriousness as the words “want”, “good”, “baby”, and “delicate” all connect through a sense of innocent, or even naivety, and then ends with “made” and “goes”, which are more forceful words. This transition of words in this specific section of the album can be connected to Taylor Swift’s life herself as she began her music career in country and being known as the “girl-next-door” (Fogarty and Arnold 2021). Oftentimes, the term is used to signify a person who is perceived as familiar and approachable, which can be seemingly related to the innocence and softness led by the start of the track. However, in 2016, everything changes once Taylor Swift was found in numerous of controversies, such as the tension between Kayne West and Taylor Swift from an awards ceremony, the public breakup with Calvin Harris and the puzzling feud with Katy Perry (Lerner-Gill 2022). The seemingly innocent girl from the past was no more, and we are left with a broken Taylor Swift who needed to build herself from within. After months of silence, she released the music video “Look What You Made Me Do” from the album, which shows her in striking makeup and bold outfits—all while screaming throughout and destroying things around her (Swift 2017).</p>
+<p>After the eventful sent of tracks, we are brought to the next few tracks that represent more “girlboss” energy where Taylor Swift is most known to “getaway” amidst all the scrutiny she receives from the public. As through her music video “Look What You Made Me Do”, she continues to describe her need to tell her inner self that she is “gorgeous” by “dancing” and “waiting” for herself to grow past all the snake emojis she was spammed with online (Lerner-Gill 2022). We are then left with the last four songs, which describe Taylor Swift’s reflecting thoughts on her scars. At the time of the album release, the public has done much damage to “take” “things” away from her and put her “call” for help on “hold”.</p>
 </section>
 </section>
 <section id="nlp-word-cloud" class="level3">
 <h3 class="anchored" data-anchor-id="nlp-word-cloud">NLP Word Cloud</h3>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install wordcloud</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -606,7 +590,7 @@ Requirement already satisfied: python-dateutil&gt;=2.7 in /opt/conda/lib/python3
 Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;wordcloud) (1.16.0)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="22">
+<div class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">20</span>))</span>
@@ -634,13 +618,13 @@ Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-pac
 </div>
 <section id="finding-analysis-1" class="level4">
 <h4 class="anchored" data-anchor-id="finding-analysis-1">Finding &amp; Analysis</h4>
-<p>Through the word cloud, we continue to see Taylor Swift unveil her own journey of healing after months of struggling from public criticism and hiding from the public eye. In the first row of the visualization, we notice that Taylor Swift marks the start of her album with “let” “games” “begin”, which is quite fitting for how she slowly uncovers the journey of both hardship and self-love to find herself. These “games” could potentially signify her battle against the public critizing her on social media and even against other musicians. Immediately, the next song “End Game” follows up with “want” “end” “game” “big”, signifying Taylor Swift’s potential realization that the ‘game’ she has entered are in fact not fun but rather a source of dread that will soon change her forever. Surprisingly, the song “I Did Something Bad” contains numerous positive words, such as “good” and “light”, which contrasts the seemingly negative tone of the track title. This could potentially signify a calm before the storm as the tracks “Don’t Blame Me” and “Delicate” also follow the same soft-like theme with “baby” and “delicate”. Looking into the tracks “Look What You Made Me Do” and “So It Goes…”, which are part of the ellipsis story discussed in the previous visualization, the words “trust” “nobody” and “caught” “bad” are the storm that has built up from the previous tracks. This pair of songs continue to build the story of Taylor Swift learning from her controversies and growing up to be less of the innocent country girl she once was.</p>
-<p>Taylor Swift’s life continues to unfolded through the next set of tracks where she emerges with a “gorgeous” “face” as she “cannot” “look” “back” at her past. She must continue to face forward and be resilent of the struggles she has faced. Additionally, with the release of this new album, Taylor Swift daringly makes some musical and stylistic choices that differed from the country and ballet music found in her previous albums, such as <em>Red</em> and <em>1989</em> (Fogarty and Arnold 2021). In a way, she mentions this in “Getaway Car” where she “get[s ]away” from her previous styles and begins to do things for the “first” time, “never” done before. Her story continues to descibe the healing of her “soul” and “body” in the track “King of My Heart” as she is “dancing” with her “dress”. During this time Taylor Swift was also reportedly seen to have some relationship her a long family friend, Joe Alwyn (Aniftos 2023), who may have also contributed to Taylor Swift’s journey in self-growth. The end of the track contiains the words “hold”, “memories”, and “floor”, which provide an imagery of falling calmly with memories and thoughts of the past. Tied in with the title of the track “New Year’s Day”, we see Taylor Swift emerging from the “game” that she started with and transforms into a Taylor Swift that has never been seen before.</p>
+<p>Through the word cloud, we continue to see Taylor Swift unveil her own journey of healing after months of struggling from public criticism and hiding from the public eye. In the first row of the visualization, we notice that Taylor Swift marks the start of her album with “let” “games” “begin”, which is quite fitting for how she slowly uncovers the journey of both hardship and self-love to find herself. These “games” could potentially signify her battle against the public criticism on her social media and even against other musicians. Immediately, the next song “End Game” follows up with “want” “end” “game” “big”, signifying Taylor Swift’s potential realization that the ‘game’ she has entered are in fact not fun but rather a source of dread that will soon change her forever. Surprisingly, the song “I Did Something Bad” contains numerous positive words, such as “good” and “light”, which contrasts the seemingly negative tone of the track title. This could potentially signify a calm before the storm as the tracks “Don’t Blame Me” and “Delicate” also follow the same soft-like theme with “baby” and “delicate”. Looking into the tracks “Look What You Made Me Do” and “So It Goes…”, which are part of the ellipsis story discussed in the previous visualization, the words “trust” “nobody” and “caught” “bad” are the storm that has built up from the previous tracks. This pair of songs continue to build the story of Taylor Swift learning from her controversies and growing up to be less of the innocent country girl she once was.</p>
+<p>Taylor Swift’s life continues to unfolded through the next set of tracks where she emerges with a “gorgeous” “face” as she “cannot” “look” “back” at her past. She must continue to face forward and be resilient of the struggles she has faced. Additionally, with the release of this new album, Taylor Swift daringly makes some musical and stylistic choices that differed from the country and ballet music found in her previous albums, such as <em>Red</em> and <em>1989</em> (Fogarty and Arnold 2021). In a way, she mentions this in “Getaway Car” where she “get[s ]away” from her previous styles and begins to do things for the “first” time, “never” done before. Her story continues to describe the healing of her “soul” and “body” in the track “King of My Heart” as she is “dancing” with her “dress”. During this time Taylor Swift was also reportedly seen to have some relationship her a long family friend, Joe Alwyn (Aniftos 2023), who may have also contributed to Taylor Swift’s journey in self-growth. The end of the track contains the words “hold”, “memories”, and “floor”, which provide an imagery of falling calmly with memories and thoughts of the past. Tied in with the title of the track “New Year’s Day”, we see Taylor Swift emerging from the “game” that she started with and transforms into a Taylor Swift that has never been seen before.</p>
 </section>
 </section>
 <section id="sentiment-analysis-1" class="level3">
 <h3 class="anchored" data-anchor-id="sentiment-analysis-1">Sentiment Analysis</h3>
-<div class="cell" data-execution_count="23">
+<div class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.sentiment <span class="im">import</span> vader</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> opinion_lexicon</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -654,11 +638,11 @@ Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-pac
 [nltk_data]     /home/jovyan/nltk_data...
 [nltk_data]   Package opinion_lexicon is already up-to-date!</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="23">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <pre><code>True</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>total <span class="op">=</span> []</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> vader.SentimentIntensityAnalyzer()           </span>
@@ -688,7 +672,7 @@ Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-pac
 <span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Track Name'</span>)</span>
 <span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Sentiment Score'</span>)</span>
 <span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Sentiment Scores of Each Track In Reputation Album'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
+<div class="cell-output cell-output-display" data-execution_count="43">
 <pre><code>Text(0.5, 1.0, 'Sentiment Scores of Each Track In Reputation Album')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -697,12 +681,12 @@ Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-pac
 </div>
 <section id="finding-analysis-2" class="level4">
 <h4 class="anchored" data-anchor-id="finding-analysis-2">Finding &amp; Analysis</h4>
-<p>As we look more into the sentiment of each track in the album, we notice that the album is mainly positive with a few songs leaning towards a negative sentiment. We continue to support our previus findings of generally more postive sentiment in the ellipsis story of tracks with some negative sentiment sprinkled in to foreshadow the future that has to come. Once the ellipsis story has been completed, we immediately notice a drop to negative sentiment with “Gorgeous” and “Getaway Car”. This is reasonable as Taylor Swift potential draws on the commonly used saying “I’m fine” where people attempt to appear put together on the outside but are actually suffering from within. As such, the titles of the two tracks display this same contrast between the lyric and title. Moving forward, the next three songs “King of My Heart”, “Dancing with Our Hands Tied”, and “Dress” convey a sense of joy through dancing at a party or reception. Though the imagery of dacing with our hands tied could eventually lead to falling down, we can see that there is in fact a decline in sentiment and into the negatives with the songs “This Is Why We Can’t have Nice Things” and “Call It What You Want”. As seen previously in our visualiztions, the last few tracks in her album provide a reflection of the painful past that Taylor Swift has endured. Additionally, these two songs contain the most negative sentiment, which is reasonable as she has gone through both the good and the bad to see the true appearance of the scars that she has been left with. However, much like previously seen, “New Year’s Day” provides a glimmering hope for the future as Taylor Swift retaliates her pains.</p>
+<p>As we look more into the sentiment of each track in the album, we notice that the album is mainly positive with a few songs leaning towards a negative sentiment. We continue to support our previous findings of generally more positive sentiment in the ellipsis story of tracks with some negative sentiment sprinkled in to foreshadow the future that has to come. Once the ellipsis story has been completed, we immediately notice a drop to negative sentiment with “Gorgeous” and “Getaway Car”. This is reasonable as Taylor Swift potential draws on the commonly used saying “I’m fine” where people attempt to appear put together on the outside but are actually suffering from within. As such, the titles of the two tracks display this same contrast between the lyric and title. Moving forward, the next three songs “King of My Heart”, “Dancing with Our Hands Tied”, and “Dress” convey a sense of joy through dancing at a party or reception. Though the imagery of dancing with our hands tied could eventually lead to falling down, we can see that there is in fact a decline in sentiment and into the negatives with the songs “This Is Why We Can’t have Nice Things” and “Call It What You Want”. As seen previously in our visualizations, the last few tracks in her album provide a reflection of the painful past that Taylor Swift has endured. Additionally, these two songs contain the most negative sentiment, which is reasonable as she has gone through both the good and the bad to see the true appearance of the scars that she has been left with. However, much like previously seen, “New Year’s Day” provides a glimmering hope for the future as Taylor Swift retaliates her pains.</p>
 </section>
 </section>
 <section id="sentiment-analysis-word-clouds" class="level3">
 <h3 class="anchored" data-anchor-id="sentiment-analysis-word-clouds">Sentiment Analysis Word Clouds</h3>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">20</span>))</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>tp_word <span class="op">=</span> [] </span>
@@ -742,7 +726,7 @@ Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-pac
 <p><img src="TaylorSwift_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="26">
+<div class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">20</span>))</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>tn_word <span class="op">=</span> [] </span>
@@ -784,14 +768,14 @@ Requirement already satisfied: six&gt;=1.5 in /opt/conda/lib/python3.10/site-pac
 <section id="finding-analysis-3" class="level4">
 <h4 class="anchored" data-anchor-id="finding-analysis-3">Finding &amp; Analysis</h4>
 <p>To conclude the analysis of how the order of the track in the <em>Reputation</em> album matters, the top five words of positive and negative sentiment were used to find words to describes both aspects of the narrative that Taylor Swift tells. For the positive words, the words “love”, “like”, “want”, and “trust” can all signify Taylor Swift’s own journey to her loving and liking her self. She may be potentially reflecting on her lessons of understanding the importance of trust with her “friend”[s] or even describing new friends that she has made during this critical time in her life. As previously mentioned, Taylor Swift was reproted mentioned to be having a relationship with Joe Alwyn. She was also seen to have reduced her friend group to just a few close friends, one of which is Selena Gomez who she even featured in the song “Bad Blood”. Overall, we see that Taylor Swift has written in her lyrics that she has been getting “better” and being “ready” for the “best” after the narrative of her album unfolds.</p>
-<p>On the other hand, the top five words of negative sentiment provides insight to the inner conflict and battles faced by Taylor Swift. We get a huge glimpse that above all else, she was “alone” during this time. Words such as “hurt”, “lose”, and “shaking” further create one of the “darkest” period of Taylor Swift’s life as she is ridculed with “liars” and “blame”. This section of words is filled with not only depression and judgment from the public but also self hare. Reading these words out to yourself repeatedly can stimulate the same deep emotions felt by Taylor Swift. It is not a pretty sight nor a motivational one, but Taylor Swift allows listeners to feel deeply with her at her lowest low.</p>
+<p>On the other hand, the top five words of negative sentiment provides insight to the inner conflict and battles faced by Taylor Swift. We get a huge glimpse that above all else, she was “alone” during this time. Words such as “hurt”, “lose”, and “shaking” further create one of the “darkest” period of Taylor Swift’s life as she is ridculed with “liars” and “blame”. This section of words is filled with not only depression and judgment from the public but also self hate. Reading these words out to yourself repeatedly can stimulate the same deep emotions felt by Taylor Swift. It is not a pretty sight nor a motivational one, but Taylor Swift allows listeners to feel deeply with her at her lowest low.</p>
 </section>
 </section>
 </section>
 <section id="discussion" class="level1">
 <h1>Discussion</h1>
-<p>Based on all the visualizations, findings, and analysis conducted from our results, we can conclude there is in fact some semble of a story told within the <em>Reputation</em> album. By analyzing the both the most frequently used words and conducting a sentiment analysis of word choices that Taylor Swift makes, we can notice that there is a strong connection between the emotions told within the lyrics of each track as well as between each track. As such, we are able to better understand the emotional journey that Taylor Swift makes as she faces public criticism from her various controversies. From beginning the album with innocence, softness, and delicacy to recognizing that these games are in fact knives pointed at her to needing to look forward and face without worry to a wishful future to the end of her period of games, Taylor Swift evokes strong and powerful feelings that take her listeners into the same traumatic period in Taylor Swift’s life. With defining words in each track that connects to this overarching joruney, we gain even more persepective into the obvious pattern of Taylor Swift’s personal and musical journey between 2015 to 2017. The common theme of seemingly contrast between some titles and lyric sentiment are further extended as we look into the most commonly used positive and negative words. On the surface, while the album contains mainly positive sentiment for each individual song, when we look deeper into the words of negative sentiment all together, we see an underlying deep and stabbing use of words that descibe the lowest low that Taylor Swift experiences.</p>
-<p>Taylor Swift has often been praised to be a singer with commendable storytelling in her songs, and through this exploration of the <em>Reputation</em>, her reputation has not faltered. While we frequently analyze songs individuals to determine the story told within them, we may often overlook how songs themselves can be used to describe a big story that tells a more deeper story. As such, this analysis of Taylor Swift’s album has allowed me to appreciate each individual word within each track as well as better understand the lessons and reflections shared by Taylor Swift. Given that we have found a story told through one particular album, a potential avenue of future research could even be an analysis of how each album of Taylor Swift’s entire musical career describes her life story as a whole.</p>
+<p>Based on all the visualizations, findings, and analysis conducted from our results, we can conclude there is in fact some semblance of a story told within the <em>Reputation</em> album. By analyzing the both the most frequently used words and conducting a sentiment analysis of word choices that Taylor Swift makes, we can notice that there is a strong connection between the emotions told within the lyrics of each track as well as between each track. As such, we can better understand the emotional journey that Taylor Swift makes as she faces public criticism from her various controversies. From beginning the album with innocence, softness, and delicacy to recognizing that these games are in fact knives pointed at her to needing to look forward and face without worry to a wishful future to the end of her period of games, Taylor Swift evokes strong and powerful feelings that take her listeners into the same traumatic period in Taylor Swift’s life. With defining words in each track that connects to this overarching journey, we gain even more perspective into the obvious pattern of Taylor Swift’s personal and musical journey between 2015 to 2017. The common theme of seemingly contrast between some titles and lyric sentiment are further extended as we investigate the most used positive and negative words. On the surface, while the album contains mainly positive sentiment for each individual song, when we look deeper into the words of negative sentiment all together, we see an underlying deep and stabbing use of words that describe the lowest low that Taylor Swift experiences. Looking into further research, given that we have found a story told through one particular album, a potential avenue to investigate could be an analysis of how each album of Taylor Swift’s entire musical career describes her life story as a whole.</p>
+<p>Taylor Swift has often been praised to be a singer with commendable storytelling in her songs, and through this exploration of the <em>Reputation</em>, her reputation has not faltered. While we frequently analyze songs individuals to determine the story told within them, we may often overlook how songs themselves can be used to describe a big story that tells a deeper story. Tracks as a whole are part of a greater story in an album just as the lyrics of a song tell us a story. As such, this analysis of Taylor Swift’s album has allowed me to appreciate the order of the track in <em>Reputation</em> as well as better understand the lessons and reflections shared by Taylor Swift.</p>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <p>Aniftos R. (2023). <em>A Timeline of Taylor Swift &amp; Joe Alwyn’s Relationship</em>. Billboard.</p>
